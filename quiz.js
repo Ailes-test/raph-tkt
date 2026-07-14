@@ -50,7 +50,7 @@ const WARMUP_QUESTIONS = [
 ];
 
 const Q1_OPTIONS = [
-  { text: "Rien de spécial, je n'y ai pas fait attention", tag: "fin" },
+  { text: "Rien de spécial, je n'y ai pas fait attention", tag: "curieux" },
   { text: "Je me suis dit bizarre mais sympa", tag: "curieux" },
   { text: "Je me suis dit bizarre mais bon qu'est-ce qu'il veut encore lui", tag: "fin" },
   { text: "J'ai capté le move et ça m'a fait plaisir", tag: "curieux" },
