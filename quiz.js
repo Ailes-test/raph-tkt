@@ -145,28 +145,40 @@ function playTransition() {
 }
 
 // ---------- Question 1 ----------
+// ---------- Question 1 (Version sécurisée) ----------
 const q1OptionsEl = document.getElementById('q1Options');
 const q1ContinueBtn = document.getElementById('q1ContinueBtn');
+
+// On vide d'abord pour éviter les doublons au cas où
+q1OptionsEl.innerHTML = ''; 
 
 Q1_OPTIONS.forEach(opt => {
   const btn = document.createElement('button');
   btn.className = 'option-btn';
   btn.type = 'button';
   btn.textContent = opt.text;
+  
   btn.addEventListener('click', () => {
     btn.classList.toggle('selected');
+    
     if (btn.classList.contains('selected')) {
+      // On ajoute l'option sélectionnée
       state.q1Selected.push(opt);
     } else {
-      state.q1Selected = state.q1Selected.filter(o => o.text !== opt.text);
+      // On la retire si elle est désélectionnée
+      state.q1Selected = state.q1Selected.filter(o => o.text === opt.text);
     }
+    // Active le bouton continuer si au moins une option est cochée
     q1ContinueBtn.disabled = state.q1Selected.length === 0;
   });
+  
   q1OptionsEl.appendChild(btn);
 });
 
 q1ContinueBtn.addEventListener('click', () => {
+  // On vérifie si parmis les choix sélectionnés, il y a le tag "curieux"
   const hasCurieux = state.q1Selected.some(o => o.tag === 'curieux');
+  
   if (hasCurieux) {
     state.path = 'complet';
     showScene('scene-food');
