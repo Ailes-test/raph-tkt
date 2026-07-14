@@ -307,12 +307,19 @@ sendBtn.addEventListener('click', async () => {
       body: JSON.stringify(payload)
     });
 
-    if (!res.ok) throw new Error('Échec de l\'envoi');
+    if (!res.ok) {
+      let detail = '';
+      try {
+        const data = await res.json();
+        detail = data.error || '';
+      } catch (_) {}
+      throw new Error(detail || `Échec de l'envoi (code ${res.status})`);
+    }
 
     sendStatus.textContent = 'Message envoyé, merci !';
     sendBtn.textContent = 'Envoyé';
   } catch (err) {
-    sendStatus.textContent = "Une erreur est survenue, réessaie.";
+    sendStatus.textContent = `Erreur : ${err.message}`;
     sendBtn.disabled = false;
     console.error(err);
   }

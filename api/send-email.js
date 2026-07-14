@@ -50,16 +50,22 @@ module.exports = async (req, res) => {
       ${message ? `<p><strong>Message laissé :</strong><br>${escapeHtml(message)}</p>` : '<p><em>Aucun message laissé.</em></p>'}
     `;
 
-    await resend.emails.send({
+    const sendResult = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       subject: 'Nouvelles réponses au quiz du site',
       html
     });
 
+    if (sendResult.error) {
+      console.error('Erreur Resend:', sendResult.error);
+      res.status(500).json({ error: sendResult.error.message || 'Échec de l\'envoi côté Resend' });
+      return;
+    }
+
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Erreur envoi mail:', err);
-    res.status(500).json({ error: 'Échec de l\'envoi' });
+    res.status(500).json({ error: err.message || 'Échec de l\'envoi' });
   }
 };
