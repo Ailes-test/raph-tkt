@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+  <!-- Warm-up : questions rapides pour lancer le truc -->
+  <section class="scene quiz-scene" id="scene-warmup" data-active="true">
+    <p class="eyebrow" id="warmupProgress"></p>
+    <h2 class="quiz-question" id="warmupQuestion"></h2>
+    <div class="options" id="warmupOptions"></div>
+  </section>
+
+  <!-- Réaction animée après chaque réponse warm-up -->
+  <section class="scene" id="scene-reaction">
+    <h2 class="transition-text" id="reactionText"></h2>
+  </section>
+
+  <!-- Transition animée avant la vraie question -->
+  <section class="scene" id="scene-transition">
+    <h2 class="transition-text" id="transitionText"></h2>
+  </section>
+
+  <!-- Question 1 : stories (choix multiples) -->
+  <section class="scene quiz-scene" id="scene-q1">
+    <p class="eyebrow">on rentre dans le vif du sujet</p>
+    <h2 class="quiz-question">Qu'est-ce que tu as pensé quand j'ai liké tes stories ?</h2>
+    <p class="hint-text">tu peux cocher plusieurs réponses</p>
+    <div class="options" id="q1Options"></div>
+    <button class="btn btn--primary" id="q1ContinueBtn" disabled>Continuer</button>
+  </section>
+
+  <!-- Question 2 : plat -->
+  <section class="scene quiz-scene" id="scene-food">
+    <p class="eyebrow">question 2</p>
+    <h2 class="quiz-question">Si tu devais discuter autour d'un bon plat, ce serait quoi ?</h2>
+    <div class="options" id="foodOptions"></div>
+    <input type="text" id="foodOtherInput" class="text-input" placeholder="ton plat à toi..." style="display:none;">
+    <button class="btn btn--primary" id="foodContinueBtn" disabled>Continuer</button>
+  </section>
+
+  <!-- Question 3 : musique -->
+  <section class="scene quiz-scene" id="scene-music">
+    <p class="eyebrow">question 3</p>
+    <h2 class="quiz-question">Une musique que t'aimes bien en ce moment ?</h2>
+    <input type="text" id="musicInput" class="text-input" placeholder="titre, artiste, ce que tu veux...">
+    <button class="btn btn--primary" id="musicContinueBtn" disabled>Continuer</button>
+  </section>
+
+  <!-- Écran de fin -->
+  <section class="scene" id="scene-end">
+    <p class="eyebrow" id="endEyebrow">fin</p>
+    <h2 class="result-title" id="endTitle"></h2>
+    <p class="context-text" id="endText"></p>
+    <div class="options" id="invitationOptions"></div>
+
+    <div class="message-block">
+      <label for="freeMessage" class="field-label">un message pour moi ? (facultatif)</label>
+      <textarea id="freeMessage" rows="3" placeholder="écris ici si tu veux..."></textarea>
+    </div>
+
+    <button class="btn btn--primary" id="sendBtn">Envoyer</button>
+    <p class="send-status" id="sendStatus"></p>
+  </section>
+
+</div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
