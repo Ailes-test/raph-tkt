@@ -1,7 +1,7 @@
 // --- Données ---
 const WARMUP_QUESTIONS = [
   {
-    question: "Tu vas bien ?",
+    question: "Tu vas bien tgtgtgtgtgt ?",
     options: [
       { text: "Oui", reaction: "Ça fait plaisir à entendre" },
       { text: "Non", reaction: "Ah, je te dis quoi moi mtn" }
