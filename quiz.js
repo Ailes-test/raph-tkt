@@ -34,7 +34,7 @@ const WARMUP_QUESTIONS = [
     question: "Tu dis ce que tu penses ou tu tournes autour du pot ?",
     options: [
       { text: "Je dis ce que je pense", reaction: "Ok direct, j'aime bien" },
-      { text: "Je dis pas ce que je pense", reaction: "Mystérieux(se) toi" },
+      { text: "Je dis pas ce que je pense", reaction: "Mystérieuse toi en fait" },
       { text: "Ça dépend du sujet", reaction: "Ah ouais t'es relou en fait mdr" }
     ]
   },
